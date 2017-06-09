@@ -1,0 +1,25 @@
+{
+  "name": "dir-traverse",
+  "version": "0.0.1",
+  "description": "Walk a directory tree sync.",
+  "main": "loader.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/leaf4monkey-npm/dir-traverse.git"
+  },
+  "keywords": [
+    "directory",
+    "walk",
+    "traverse",
+    "sync"
+  ],
+  "author": "leaf4monkey <joc98@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leaf4monkey-npm/dir-traverse/issues"
+  },
+  "homepage": "https://github.com/leaf4monkey-npm/dir-traverse#readme"
+}
