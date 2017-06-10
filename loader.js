@@ -4,6 +4,7 @@
  * @author joc (Chen Wen)
  */
 let Directory = require('./directory');
+let PATH = require('path');
 
 function loader (dir, options) {
     let {handler, filter} = options;
@@ -14,8 +15,12 @@ function loader (dir, options) {
         let stat = directory.stat(filename);
         let isFile = stat.isFile();
         let isDirectory = stat.isDirectory();
+        let name = filename;
+        if (isFile) {
+            name = PATH.parse(filename).name;
+        }
 
-        handler({directory, filename, fullPath, isFile, isDirectory, options});
+        handler({directory, filename, name, fullPath, isFile, isDirectory, options});
     });
 }
 
