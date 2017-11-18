@@ -13,7 +13,7 @@ const dir = `${PATH.parse(path).dir}/m`;
 describe('finder()', () => {
     let result;
     let mockData;
-    const handler = ({filename, isDirectory, layer, parent}) => {
+    const handler = ({fullPath, filename, isDirectory, layer, parent}) => {
         result[layer] = result[layer] || {directories: [], files: []};
         const desc = {name: filename, parent};
         const name = isDirectory ? 'directories' : 'files';

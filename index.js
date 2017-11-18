@@ -57,7 +57,7 @@ const finder = (dir, options = {}) => {
         checkFunction('handler', handler);
 
         ls(dir, filterFn).forEach(filename => {
-            const fullPath = PATH.resolve(dir, filename);
+            const fullPath = PATH.join(dir, filename);
             const stat = getStat(fullPath);
             const isFile = stat.isFile();
             const isDirectory = stat.isDirectory();
