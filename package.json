@@ -1,10 +1,14 @@
 {
   "name": "dir-traverse",
-  "version": "0.0.2",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8"
+  },
   "description": "Walk a directory tree sync.",
-  "main": "loader.js",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "prepublishOnly": "npm test"
   },
   "repository": {
     "type": "git",
@@ -21,5 +25,13 @@
   "bugs": {
     "url": "https://github.com/leaf4monkey-npm/dir-traverse/issues"
   },
-  "homepage": "https://github.com/leaf4monkey-npm/dir-traverse#readme"
+  "homepage": "https://github.com/leaf4monkey-npm/dir-traverse#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  }
 }
