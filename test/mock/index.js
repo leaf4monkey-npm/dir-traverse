@@ -12,6 +12,10 @@ module.exports = [
         ],
         files: [
             {
+                name: 'file13.js',
+                parent: null
+            },
+            {
                 name: 'file2.js',
                 parent: null
             }

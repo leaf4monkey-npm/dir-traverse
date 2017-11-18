@@ -1,6 +1,6 @@
 {
   "name": "dir-traverse",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "engines": {
     "node": ">=8"
   },
@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "fs": "^0.0.1-security",
+    "lodash": "^4.17.4",
     "path": "^0.12.7"
   }
 }

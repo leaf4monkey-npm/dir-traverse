@@ -32,7 +32,8 @@ const getFilter = filter => {
         return file => filter.test(file);
     }
     if (filter instanceof Array) {
-        return file => filter.indexOf(file) >= 0;
+        const filterArr = filter.map(getFilter);
+        return file => filterArr.some(f => f(file));
     }
 
     throw new TypeError(
