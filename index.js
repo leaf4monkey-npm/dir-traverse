@@ -16,31 +16,6 @@ const checkFunction = (name, fn) => {
     }
 };
 
-const getFilter = filter => {
-    if (!filter) {
-        return;
-    }
-
-    let type = typeof filter;
-    if (type === 'function') {
-        return filter;
-    }
-    if (type === 'string') {
-        return file => file === filter;
-    }
-    if (filter instanceof RegExp) {
-        return file => filter.test(file);
-    }
-    if (filter instanceof Array) {
-        const filterArr = filter.map(getFilter);
-        return file => filterArr.some(f => f(file));
-    }
-
-    throw new TypeError(
-        `Expect \`filter\` to be a function, RegExp type, string or an Array of string, got a(n) ${type}.`
-    );
-};
-
 /**
  * To search the names of files or directories in a assigned directory.
  * @param dir {string} the full dir path
@@ -51,12 +26,11 @@ const getFilter = filter => {
  */
 const finder = (dir, options = {}) => {
     const {handler, filter, recursive, depth = 0} = options;
-    const filterFn = getFilter(filter);
 
     const fn = (dir, options, layer, parent) => {
         checkFunction('handler', handler);
 
-        ls(dir, filterFn).forEach(filename => {
+        ls(dir, filter).forEach(filename => {
             const fullPath = PATH.join(dir, filename);
             const stat = getStat(fullPath);
             const isFile = stat.isFile();

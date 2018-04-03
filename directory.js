@@ -10,6 +10,31 @@ const checkDir = path => {
     }
 };
 
+const getFilter = filter => {
+    if (!filter) {
+        return;
+    }
+
+    let type = typeof filter;
+    if (type === 'function') {
+        return filter;
+    }
+    if (type === 'string') {
+        return file => file === filter;
+    }
+    if (filter instanceof RegExp) {
+        return file => filter.test(file);
+    }
+    if (filter instanceof Array) {
+        const filterArr = filter.map(getFilter);
+        return file => filterArr.some(f => f(file));
+    }
+
+    throw new TypeError(
+        `Expect \`filter\` to be a function, RegExp type, string or an Array of string, got a(n) ${type}.`
+    );
+};
+
 /**
  *
  * @param path
@@ -21,7 +46,7 @@ const ls = (path, filter) => {
 
     let arr = fs.readdirSync(path);
     if (filter) {
-        arr = arr.filter(filter);
+        arr = arr.filter(getFilter(filter));
     }
     return arr;
 };
